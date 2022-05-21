@@ -1,0 +1,45 @@
+POST http://localhost:8080/app/people
+Content-Type: application/json
+
+{
+  "firstName": "Ania",
+  "lastName": "Zagadka"
+}
+
+###
+
+POST http://localhost:8080/app/people
+Content-Type: application/json
+
+{
+  "firstName": "Kazik",
+  "lastName": "Detektyw"
+}
+
+###
+
+GET http://localhost:8080/app/people
+
+###
+
+GET http://localhost:8080/app/people?size=1&page=1
+
+###
+
+GET http://localhost:8080/app/people/search/findByFirstName?name=Kazik
+
+###
+
+DELETE http://localhost:8080/app/people/2
+
+###
+
+PATCH http://localhost:8080/app/people/3
+Content-Type: application/json
+
+{
+  "firstName": "Kazio",
+  "lastName": "Detektyw"
+}
+
+###
