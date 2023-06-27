@@ -1,3 +1,7 @@
 server:
   servlet:
     context-path: /app
+
+spring:
+  jpa:
+    show-sql: true

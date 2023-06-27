@@ -1,0 +1,26 @@
+POST http://localhost:8080/app/person
+Content-Type: application/json
+
+{
+  "firstName": "Ania",
+  "lastName": "Zagadka",
+  "addresses": [{
+    "city": "Szczecin"
+  },{
+    "city": "Warszawa"
+  }]
+}
+
+###
+
+GET http://localhost:8080/app/person/1
+
+###
+
+GET http://localhost:8080/app/person/Ania/Zagadka
+
+###
+
+GET http://localhost:8080/app/person
+
+###
