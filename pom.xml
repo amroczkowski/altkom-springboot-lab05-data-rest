@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.altkom.springboot.lab04</groupId>
 	<artifactId>data-rest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>data-rest</name>
 	<description>Data Rest</description>
 	<properties>
