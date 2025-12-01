@@ -3,6 +3,7 @@ package pl.altkom.springboot.lab04.datarest.repository.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,6 +25,6 @@ public class Address {
 
     @JsonIgnore
     @JoinColumn(name = "person_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Person person;
 }

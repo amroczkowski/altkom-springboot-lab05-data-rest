@@ -1,6 +1,7 @@
 package pl.altkom.springboot.lab04.datarest.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -30,11 +31,11 @@ public class PersonService {
 //        final List<Person> people = personRepository.findAll();
 //        final List<Long> peopleId = people.stream()
 //                .map(Person::getId)
-//                .collect(Collectors.toList());
+//                .toList();
 //        final List<Address> addresses = addressRepository.findByPersonIdIn(peopleId);
 //        people.forEach(person -> person.setAddresses(addresses.stream()
 //                .filter(address -> address.getPerson().getId().equals(person.getId()))
-//                .collect(Collectors.toList())));
+//                .toList()));
 //        return people;
 //    }
 
