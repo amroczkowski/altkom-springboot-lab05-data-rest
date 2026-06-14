@@ -1,11 +1,11 @@
 package pl.altkom.springboot.lab04.datarest.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import pl.altkom.springboot.lab04.datarest.controller.model.SavePersonRequest;
 import pl.altkom.springboot.lab04.datarest.repository.AddressRepository;
 import pl.altkom.springboot.lab04.datarest.repository.PersonRepository;
@@ -19,14 +19,21 @@ public class PersonService {
     private final PersonRepository personRepository;
     private final AddressRepository addressRepository;
 
+    @Transactional
     public Person getPerson(final long id) {
-        return personRepository.findById(id).orElseThrow();
+        final Person person = personRepository.findById(id).orElseThrow();
+        initializePersonDependencies(person);
+        return person;
     }
 
+    @Transactional
     public List<Person> getPeople() {
-        return personRepository.findAll();
+        final List<Person> people = personRepository.findAll();
+        initializePeopleDependencies(people);
+        return people;
     }
 
+//    @Transactional
 //    public List<Person> getPeople() {
 //        final List<Person> people = personRepository.findAll();
 //        final List<Long> peopleId = people.stream()
@@ -54,17 +61,28 @@ public class PersonService {
         return personRepository.save(person);
     }
 
+    @Transactional
     public Person getPerson(final String firstName, final String lastName) {
-        //        return personRepository.findByFirstNameAndLastName(firstName, lastName).stream()
-        //                .findFirst()
-        //                .orElseThrow();
-
-        //        return personRepository.findByName(firstName, lastName).stream()
-        //                .findFirst()
-        //                .orElseThrow();
-
-        return personRepository.findByNameNative(firstName, lastName).stream()
+        final Person person = personRepository.findByFirstNameAndLastName(firstName, lastName).stream()
                 .findFirst()
                 .orElseThrow();
+
+//        final Person person = personRepository.findByName(firstName, lastName).stream()
+//                .findFirst()
+//                .orElseThrow();
+
+//        final Person person = personRepository.findByNameNative(firstName, lastName).stream()
+//                .findFirst()
+//                .orElseThrow();
+        initializePersonDependencies(person);
+        return person;
+    }
+
+    private static void initializePersonDependencies(Person person) {
+        person.getAddresses().size();
+    }
+
+    private static void initializePeopleDependencies(List<Person> people) {
+        people.forEach(PersonService::initializePersonDependencies);
     }
 }

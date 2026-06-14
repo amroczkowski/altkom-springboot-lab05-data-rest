@@ -23,6 +23,6 @@ public class Person {
 
     private String firstName;
     private String lastName;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "person")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
     private List<Address> addresses = new ArrayList<>();
 }
