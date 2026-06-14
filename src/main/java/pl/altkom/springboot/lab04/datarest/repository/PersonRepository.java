@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import pl.altkom.springboot.lab04.datarest.repository.model.Person;
 
+//@RepositoryRestResource(path = "people")
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
